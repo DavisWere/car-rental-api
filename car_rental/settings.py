@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
+import pymysql
+pymysql.install_as_MySQLdb()
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -28,9 +30,58 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
+ENV = os.getenv('ENV')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost',
+                 '127.0.0.1',
+                 "localhost:5173",
+                 'localhost:5174',
+                 'car-rental-api-production-51b1.up.railway.app',
+                 
+                 ]
 
+
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+"""# Content Security Policy settings"""
+CSP_DEFAULT_SRC = ("'self'",)
+
+"""# Allow embedding in iframes from these specific origins"""
+CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
+                        'https://qbo.smartinvoice.co.ke',
+                        'http://qbo.testing.smartinvoice.co.ke',
+                        'https://qbo.testing.smartinvoice.co.ke',
+                        "http://localhost:5173",
+                        "http://localhost:5174")
+CORS_ALLOW_ALL_HEADERS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://car-rental-api-production-51b1.up.railway.app',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://car-rental-api-production-51b1.up.railway.app',
+
+]
 
 # Application definition
 
@@ -143,12 +194,30 @@ WSGI_APPLICATION = 'car_rental.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASES = {}
+
+if DEBUG == False or ENV =='Production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'railway',
+            'USER': os.getenv('USER'),
+            'PASSWORD': os.getenv('PASSWORD'),
+            'HOST': os.getenv('HOST'),
+            'PORT': os.getenv('PORT'),
+        }
     }
-}
+    print(os.getenv('PORT'))
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+    print("local")
+
 
 
 # Password validation
