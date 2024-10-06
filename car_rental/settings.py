@@ -40,48 +40,6 @@ ALLOWED_HOSTS = ['localhost',
                  ]
 
 
-X_FRAME_OPTIONS = 'ALLOWALL'
-
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-"""# Content Security Policy settings"""
-CSP_DEFAULT_SRC = ("'self'",)
-
-"""# Allow embedding in iframes from these specific origins"""
-CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
-                        'https://qbo.smartinvoice.co.ke',
-                        'http://qbo.testing.smartinvoice.co.ke',
-                        'https://qbo.testing.smartinvoice.co.ke',
-                        "http://localhost:5173",
-                        "http://localhost:5174")
-CORS_ALLOW_ALL_HEADERS = True
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:5174',
-    'https://car-rental-api-production-2584.up.railway.app',
-]
-
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS',
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:5174',
-    'https://car-rental-api-production-2584.up.railway.app',
-
-]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -168,6 +126,54 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'csp.middleware.CSPMiddleware',
+]
+
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+"""# Content Security Policy settings"""
+CSP_DEFAULT_SRC = ("'self'",)
+
+"""# Allow embedding in iframes from these specific origins"""
+CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
+                        'https://qbo.smartinvoice.co.ke',
+                        'http://qbo.testing.smartinvoice.co.ke',
+                        'https://qbo.testing.smartinvoice.co.ke',
+                        "http://localhost:5173",
+                        "http://localhost:5174")
+
+CORS_ALLOW_ALL_HEADERS = True
+CORS_ALLOW_HEADERS = [
+    'authorization',
+    'content-type',
+    'x-requested-with',
+]
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://car-rental-api-production-2584.up.railway.app',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://car-rental-api-production-2584.up.railway.app',
+
 ]
 
 ROOT_URLCONF = 'car_rental.urls'
