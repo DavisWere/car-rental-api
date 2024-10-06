@@ -141,7 +141,8 @@ CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
                         'http://qbo.testing.smartinvoice.co.ke',
                         'https://qbo.testing.smartinvoice.co.ke',
                         "http://localhost:5173",
-                        "http://localhost:5174")
+                        "http://localhost:5174",
+                        'https://car-rental-api-production-2584.up.railway.app')
 
 CORS_ALLOW_ALL_HEADERS = True
 CORS_ALLOW_HEADERS = [
