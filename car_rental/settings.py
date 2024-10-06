@@ -136,7 +136,7 @@ TEMPLATES = [
         },
     },
 ]
-
+#wsgi application
 WSGI_APPLICATION = 'car_rental.wsgi.application'
 
 
