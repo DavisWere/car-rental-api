@@ -1,1 +1,1 @@
-web: gunicorn quickbooks_integration.wsgi
+web: gunicorn car_rental.wsgi
