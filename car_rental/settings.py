@@ -145,11 +145,6 @@ CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
                         'https://car-rental-api-production-2584.up.railway.app')
 
 CORS_ALLOW_ALL_HEADERS = True
-CORS_ALLOW_HEADERS = [
-    'authorization',
-    'content-type',
-    'x-requested-with',
-]
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     
