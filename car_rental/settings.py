@@ -128,7 +128,7 @@ MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
 ]
 
-X_FRAME_OPTIONS = 'ALLOWALL'
+#X_FRAME_OPTIONS = 'ALLOWALL'
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
