@@ -34,10 +34,8 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
-    urlconf='car_rental.urls',
-    schemes=['https']
-    
-    
+   
+   
 )
 
 urlpatterns = [

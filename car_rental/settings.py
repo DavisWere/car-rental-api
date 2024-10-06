@@ -127,7 +127,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'csp.middleware.CSPMiddleware',
 ]
-
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
 #X_FRAME_OPTIONS = 'ALLOWALL'
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
