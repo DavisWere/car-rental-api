@@ -72,6 +72,7 @@ INSTALLED_APPS = [
 """# swagger settings"""
 
 SWAGGER_SETTINGS = {
+    'DEFAULT_API_URL': 'https://car-rental-api-production-2584.up.railway.app',
     'SECURITY_DEFINITIONS': {
         'Bearer': {
             'type': 'apiKey',
@@ -145,15 +146,15 @@ CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
                         'https://car-rental-api-production-2584.up.railway.app')
 
 CORS_ALLOW_ALL_HEADERS = True
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
     
-#     'http://localhost:3000',
-#     'http://localhost:5173',
-#     'http://localhost:5174',
-#     'https://car-rental-api-production-2584.up.railway.app',
-#     'http://car-rental-api-production-2584.up.railway.app',
-# ]
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://car-rental-api-production-2584.up.railway.app',
+    'http://car-rental-api-production-2584.up.railway.app',
+]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
