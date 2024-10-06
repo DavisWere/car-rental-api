@@ -71,8 +71,11 @@ INSTALLED_APPS = [
 
 """# swagger settings"""
 
+DEFAULT_API_URL = 'https://car-rental-api-production-2584.up.railway.app'
+
+
 SWAGGER_SETTINGS = {
-    'DEFAULT_API_URL': 'https://car-rental-api-production-2584.up.railway.app',
+    'DEFAULT_API_URL': DEFAULT_API_URL,
     'SECURITY_DEFINITIONS': {
         'Bearer': {
             'type': 'apiKey',
@@ -90,7 +93,9 @@ SIMPLE_JWT = {
 
 }
 
+
 """spectacular settings:"""
+
 SPECTACULAR_SETTINGS = {
     'TITLE': ' car rental management system api',
     'DESCRIPTION': 'django-rest framework for car rental ms ',
