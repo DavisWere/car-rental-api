@@ -1,0 +1,1 @@
+web: gunicorn quickbooks_integration.wsgi
