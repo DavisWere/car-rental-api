@@ -36,8 +36,7 @@ ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
                  "localhost:5173",
                  'localhost:5174',
-                 'car-rental-api-production-51b1.up.railway.app',
-                 
+                 'car-rental-api-production-2584.up.railway.app',
                  ]
 
 
@@ -62,7 +61,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://car-rental-api-production-51b1.up.railway.app',
+    'https://car-rental-api-production-2584.up.railway.app',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -79,7 +78,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://car-rental-api-production-51b1.up.railway.app',
+    'https://car-rental-api-production-2584.up.railway.app',
 
 ]
 
