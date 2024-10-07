@@ -1,6 +1,7 @@
 from django.db import models
 from car.models import Car
 from users.models import User
+from datetime import timedelta
 
 class Rental(models.Model):
     class RentalStatus(models.TextChoices):

@@ -1,4 +1,8 @@
 from django.contrib import admin
-from rental.models import Rental
+from .models import Rental
 
-admin.site.register(Rental)
+class RentalAdmin(admin.ModelAdmin):
+    list_display = ['id', 'customer', 'car', 'rental_date', 'return_date', 'rental_status', 'total_cost']
+    readonly_fields = ['total_cost'] 
+
+admin.site.register(Rental, RentalAdmin)

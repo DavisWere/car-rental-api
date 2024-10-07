@@ -225,7 +225,7 @@ if DEBUG == False or ENV =='Production':
             'PORT': os.getenv('PORT'),
         }
     }
-    print(os.getenv('PORT'))
+    
 
 else:
     DATABASES = {
@@ -234,7 +234,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    print("local")
+   
 
 
 
