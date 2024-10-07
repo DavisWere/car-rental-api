@@ -1,7 +1,8 @@
 from django.db import models
 from car.models import Car
 from users.models import User
-from datetime import timedelta
+from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 class Rental(models.Model):
     class RentalStatus(models.TextChoices):
@@ -18,6 +19,9 @@ class Rental(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def save(self, *args, **kwargs):
+        if self.rental_date and self.rental_date < timezone.now():
+            raise ValidationError("Rental date cannot be in the past.")
+
         if self.return_date:
             rental_duration = (self.return_date - self.rental_date).days
             if rental_duration <= 0:
@@ -25,10 +29,9 @@ class Rental(models.Model):
 
             self.total_cost = rental_duration * self.car.daily_rental_rate
         else:
-    
             self.total_cost = 0.0
 
-        super().save(*args, **kwargs) 
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Rental {self.id} by {self.customer.username}"
