@@ -8,28 +8,30 @@ class CustomUserAdmin(UserAdmin):
             "Other Fields",
             {
                 "fields": (
+                    'user_phone_number',
+                    'user_type',
+                    'user_national_id',
+                    'location',
                 )
             },
         ),
     )
+
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
             "Other Fields",
             {
                 "fields": (
-
-                    "email",
+                    'email',
                     'first_name',
                     'last_name',
                     'user_phone_number',
                     'user_type',
                     'user_national_id',
                     'location',
-
                 )
             },
         ),
     )
-
 
 admin.site.register(User, CustomUserAdmin)
