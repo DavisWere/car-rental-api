@@ -3,8 +3,8 @@ from users.models import User
 
 class Car(models.Model):
     class CarStatus(models.TextChoices):
-        AVAILABLE = 'available', 'Available'
-        RENTED = 'rented', 'Rented'
+        AVAILABLE = 'available', 'Available for rental'
+        RENTED = 'rented', ' This car is rented'
         
     car_owner =models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     car_make = models.CharField(max_length=100)
