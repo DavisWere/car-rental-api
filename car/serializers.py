@@ -19,7 +19,7 @@ class CarSerializer(serializers.ModelSerializer):
         car_owner = data.get('car_owner')
 
         if car_owner and car_owner.user_type != 'car_owner':
-            raise serializers.ValidationError("Only users with user_type 'car_owner' can own a car.")
+            raise serializers.ValidationError("Your can only rent a car.")
 
         return data
     
