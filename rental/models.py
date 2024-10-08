@@ -19,23 +19,24 @@ class Rental(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def save(self, *args, **kwargs):
-        if self.rental_date and self.rental_date < timezone.now():
-            raise ValidationError("Rental date cannot be in the past.")
+        # Check if this is a new record (pk is None) to avoid triggering past-date validation on updates
+        if self.pk is None:
+            if self.rental_date and self.rental_date < timezone.now():
+                raise ValidationError("Rental date cannot be in the past.")
 
+        # Calculate the total cost based on return date and car's daily rental rate
         if self.return_date:
             rental_duration = (self.return_date - self.rental_date).days
             if rental_duration <= 0:
                 rental_duration = 1
-
             self.total_cost = rental_duration * self.car.daily_rental_rate
         else:
             self.total_cost = 0.0
 
         super().save(*args, **kwargs)
-
+    
     def __str__(self):
         return f"Rental {self.id} by {self.customer.username}"
-    
     
 
 

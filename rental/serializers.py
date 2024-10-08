@@ -43,22 +43,24 @@ class RentalSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         rental_date = attrs.get('rental_date')
         return_date = attrs.get('return_date')
-        car = attrs.get('car')  
+        car = attrs.get('car')
 
         if car is None:
             raise serializers.ValidationError("Car must be provided.")
 
-        if rental_date and rental_date < timezone.now():
-            raise serializers.ValidationError("Rental date cannot be in the past.")
+    
+        if not self.instance:  
+            if rental_date and rental_date < timezone.now():
+                raise serializers.ValidationError("Rental date cannot be in the past.")
 
         if rental_date and return_date:
             if return_date < rental_date:
                 raise serializers.ValidationError("Return date cannot be before rental date.")
-            
+
             rental_duration = (return_date - rental_date).days
             if rental_duration <= 0:
                 rental_duration = 1
-            
+
             attrs['total_cost'] = rental_duration * car.daily_rental_rate
         else:
             attrs['total_cost'] = 0.0
