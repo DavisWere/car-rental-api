@@ -23,6 +23,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             "email": self.user.email,
             "first_name": self.user.first_name,
             "last_name": self.user.last_name,
+            'user_type': self.user.user_type,
             "is_superuser": self.user.is_superuser,
         }
 
@@ -34,8 +35,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name',
-                  'email', 'username', 'password']
+        fields = ['id', 'user_type','first_name', 'last_name', 'user_phone_number',
+                  'user_national_id', 'location','email', 'username', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
     def to_representation(self, instance):
