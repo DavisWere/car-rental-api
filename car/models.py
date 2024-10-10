@@ -14,6 +14,9 @@ class Car(models.Model):
     car_number_plate = models.CharField(max_length=20, unique=True)
     car_chesis_number = models.CharField(max_length=50, unique=True)
     car_logbook = models.FileField(upload_to='logbooks/')
+    car_capacity = models.PositiveSmallIntegerField(null=True, blank=True)
+    car_fuel_consumption = models.CharField(max_length=10, null=True, blank=True)
+    car_description = models.TextField(null=True, blank=True)
     daily_rental_rate = models.FloatField()
     status = models.CharField(max_length=10, choices=CarStatus.choices, default=CarStatus.AVAILABLE)
     

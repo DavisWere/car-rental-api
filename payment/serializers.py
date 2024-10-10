@@ -7,7 +7,8 @@ from car.models import Car
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
-        fields = ['id', 'customer', 'rental', 'amount_paid', 'payment_date', 'payment_method', 'created_at']
+        fields = ['id', 'customer', 'rental', 'amount_paid', 
+                'payment_date', 'payment_method', 'created_at']
     
     def validate(self, attrs):
         customer = attrs.get('customer')
