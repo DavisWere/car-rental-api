@@ -171,3 +171,7 @@ migrations
 migrations/
 
 /logbooks
+/car_images
+
+# Ignore media folder
+/media/
