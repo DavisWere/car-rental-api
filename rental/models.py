@@ -13,7 +13,7 @@ class Rental(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     rental_date = models.DateTimeField()
-    return_date = models.DateTimeField(null=True, blank=True)
+    return_date = models.DateTimeField()
     rental_status = models.CharField(max_length=10, choices=RentalStatus.choices, default=RentalStatus.ONGOING)
     total_cost = models.FloatField(editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
