@@ -36,7 +36,8 @@ class RentalSerializer(serializers.ModelSerializer):
             return {
                 "number plate": obj.car.car_number_plate,
                 "model": obj.car.car_model,
-                "daily rental rate": obj.car.daily_rental_rate
+                "daily rental rate": obj.car.daily_rental_rate,
+                "car_image": obj.car.car_image
             }
         return None
 
