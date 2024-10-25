@@ -33,12 +33,15 @@ class RentalSerializer(serializers.ModelSerializer):
     
     def get_car_details(self, obj):
         if obj.car:
-            return {
-                "number plate": obj.car.car_number_plate,
+            car_details = {
+                "number_plate": obj.car.car_number_plate,
                 "model": obj.car.car_model,
-                "daily rental rate": obj.car.daily_rental_rate,
-                "car_image": obj.car.car_image
+                "daily_rental_rate": obj.car.daily_rental_rate
             }
+            # Add image URL if exists
+            if obj.car.car_image:
+                car_details["car_image"] = obj.car.car_image.url
+            return car_details
         return None
 
     def validate(self, attrs):
