@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ['localhost',
                  "localhost:5173",
                  'localhost:5174',
                  'car-rental-api-production-2584.up.railway.app',
+                 'https://nayogari.netlify.app',
                  ]
 
 
@@ -150,13 +151,11 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 CSP_DEFAULT_SRC = ("'self'",)
 
 """# Allow embedding in iframes from these specific origins"""
-CSP_FRAME_ANCESTORS = ("'self'", 'https://smartinvoice.co.ke',
-                        'https://qbo.smartinvoice.co.ke',
-                        'http://qbo.testing.smartinvoice.co.ke',
-                        'https://qbo.testing.smartinvoice.co.ke',
+CSP_FRAME_ANCESTORS = ("'self'", 
                         "http://localhost:5173",
                         "http://localhost:5174",
-                        'https://car-rental-api-production-2584.up.railway.app')
+                        'https://car-rental-api-production-2584.up.railway.app',
+                        'https://nayogari.netlify.app',)
 
 CORS_ALLOW_ALL_HEADERS = True
 CORS_ALLOW_ALL_ORIGINS = False
@@ -167,6 +166,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5174',
     'https://car-rental-api-production-2584.up.railway.app',
     'http://car-rental-api-production-2584.up.railway.app',
+    'https://nayogari.netlify.app',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -185,6 +185,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5174',
     'https://car-rental-api-production-2584.up.railway.app',
     'http://car-rental-api-production-2584.up.railway.app',
+    'https://nayogari.netlify.app',
 
 ]
 
