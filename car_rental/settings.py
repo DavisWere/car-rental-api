@@ -80,8 +80,8 @@ INSTALLED_APPS = [
 
 """
 
-DEFAULT_API_URL = 'https://car-rental-api-production-2584.up.railway.app'
-
+DEFAULT_API_URL = 'https://car-rental-api-production-2584.up.railway.app'  
+    
 
 SWAGGER_SETTINGS = {
     'DEFAULT_API_URL': DEFAULT_API_URL,

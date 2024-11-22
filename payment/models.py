@@ -11,12 +11,12 @@ class Payment(models.Model):
         CREDIT_CARD = 'credit_card', 'Credit Card'
         CASH = 'cash', 'Cash'
     
-    customer = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
-    rental = models.ForeignKey(Rental, on_delete=models.CASCADE)
-    amount_paid = models.FloatField()
-    payment_date = models.DateTimeField()
+    customer = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True,verbose_name='payment_customer')
+    rental = models.ForeignKey(Rental, on_delete=models.CASCADE,verbose_name='payment_rental')
+    amount_paid = models.FloatField(verbose_name='payment_amount_paid')
+    payment_date = models.DateTimeField(verbose_name='payment_date')
     payment_method = models.CharField(max_length=20, choices=PaymentMethod.choices)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True,verbose_name='payment_created_at')
     
     def save(self, *args, **kwargs):
         if self.customer and self.rental.customer != self.customer:

@@ -10,13 +10,13 @@ class Rental(models.Model):
         COMPLETED = 'completed', 'Completed'
         CANCELLED = 'cancelled', 'Cancelled'
     
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name='rental_customer')
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, verbose_name='rental_car')
     rental_date = models.DateTimeField()
     return_date = models.DateTimeField()
     rental_status = models.CharField(max_length=10, choices=RentalStatus.choices, default=RentalStatus.ONGOING)
-    total_cost = models.FloatField(editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
+    total_cost = models.FloatField(editable=False,verbose_name='rental_total_cost')
+    created_at = models.DateTimeField(auto_now_add=True,verbose_name='rental_created_at')
     
     def save(self, *args, **kwargs):
         # Check if this is a new record (pk is None) to avoid triggering past-date validation on updates
