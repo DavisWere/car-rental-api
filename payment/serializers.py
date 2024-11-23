@@ -5,10 +5,20 @@ from rental.models import Rental
 from car.models import Car
 
 class PaymentSerializer(serializers.ModelSerializer):
+    customer = serializers.SerializerMethodField() 
     class Meta:
         model = Payment
         fields = ['id', 'customer', 'rental', 'amount_paid', 
                 'payment_date', 'payment_method', 'created_at']
+    
+       
+    def get_customer(self, obj):
+        if obj.customer:
+            return {
+                "first name": obj.customer.first_name,
+                "last name": obj.customer.last_name
+            }
+        return None
     
     def validate(self, attrs):
         customer = attrs.get('customer')
