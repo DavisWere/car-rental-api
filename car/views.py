@@ -7,6 +7,7 @@ class CarViewSet(viewsets.ModelViewSet):
     ViewSet to manage Car objects with filtering based on car_owner.
     """
     serializer_class = CarSerializer
+    queryset= Car.objects.all()
 
     def get_queryset(self):
         """
